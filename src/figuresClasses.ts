@@ -1,5 +1,3 @@
-import { equal } from 'assert';
-
 type Shape = 'triangle' | 'circle' | 'rectangle';
 type Color = 'red' | 'green' | 'blue';
 
@@ -26,7 +24,7 @@ export class Triangle implements Figure {
 
     if (maxSide >= a + b + c - maxSide) {
       throw new Error(
-        'The longest side must be smaller than the sum of the other sides',
+        'The longest side must be smaller than the sum of the other sides.',
       );
     }
   }
@@ -46,7 +44,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be greater then 0');
+      throw new Error('Radius must be greater than 0');
     }
   }
 
@@ -64,15 +62,15 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Sides of rectangle must be greater then 0');
+      throw new Error('Sides of rectangle must be greater than 0');
     }
   }
 
   getArea(): number {
-    return this.width * this.height;
+    return Math.floor(this.width * this.height * 100) / 100;
   }
 }
 
-export function getInfo(figure): string {
+export function getInfo(figure: Figure): string {
   return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
 }
